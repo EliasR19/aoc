@@ -4,17 +4,24 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+
 public class DistanceNumbers {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Distance dist = new Distance();
+
 		
 		try {
 			String input = Files.readString(Path.of("input.txt"));
 			
-			dist.numToList(input);
+			gestorInput gestor = new gestorInput(input);
+			
+			Distance dist = new Distance(gestor);
+			AppearsNum numAppears = new AppearsNum(gestor);
+			
+			System.out.println("Part One: " + dist.sumDist());
+			System.out.println("Part Two: " + numAppears.numAppearSum());
 			
 			
 		} catch (IOException e) {
@@ -22,7 +29,7 @@ public class DistanceNumbers {
 			e.printStackTrace();
 		}
 		
-
+	
 
 	}
 
