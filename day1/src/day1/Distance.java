@@ -20,27 +20,61 @@ public class Distance {
 		listStr= list.split("\n"); // agarra el string y lo divide en renglones.
 		
 		//a
-		temp = this.separeInLeft(listStr, 0);
+		temp = this.separeInTwo(listStr, 0);
 		numListLeft = this.strToNum(temp);
-		temp = this.separeInLeft(listStr, 1);
+		temp = this.separeInTwo(listStr, 1);
 		numListRight = this.strToNum(temp);
 		
 		Collections.sort(numListLeft);
 		Collections.sort(numListRight);
 		
+		
+		// SEGUNDA PARTE
+		
+		System.out.println("Part two: " +numAppearSum());
 
 		
+
+		//PRIMERA PARTE
 		
 		for(int num : this.distaceElements()) {
 			sumDistance = sumDistance + num;
 		}
 
-		System.out.println(sumDistance);
+		System.out.println("Part One: " + sumDistance);
+	}
+	
+	//LISTAS SEGUNDA PARTE
+	public long numAppearSum() {
+		long sum = 0;
+		
+		for(int n = 0; n < numListLeft.size(); n++) {
+			
+			int count = 0;
+			
+			//System.out.println("n " + numListLeft.get(n) + "sum: " +sum);
+			
+			for(int i = 0; i < numListRight.size(); i++) {
+				
+				if(numListLeft.get(n).equals(numListRight.get(i))) {
+					//System.out.println( "i " + numListRight.get(i) + "count: "+ count);
+					count++;
+				}				
+			}
+			
+			sum = sum + (numListLeft.get(n) * count);
+		}
+	
+		
+		return sum;
 	}
 	
 	
 	
 	
+	
+
+	// LISTAS PRIMERA PARTE
 	private List<Integer> distaceElements() {
 		List<Integer> distance = new ArrayList<Integer>();
 		
@@ -54,8 +88,10 @@ public class Distance {
 
 
 
-
-
+	
+	
+	
+	// ARREGLO DE LISTAS
 	private List<Integer> strToNum(List<String> strList) {
 		/* Pasa cada elemento de una listaString a un Integer y lo pone dentro de una lista tipo int */
 		List<Integer> numList = new ArrayList<Integer>();
@@ -69,7 +105,7 @@ public class Distance {
 
 	
 	
-	public List<String> separeInLeft(String[] listLine, int index) {
+	public List<String> separeInTwo(String[] listLine, int index) {
 		/*	Separa cada linea en dos index de una lista.
 		 * "10   13" = 10,13
 		 * "10   40" = 10,40
