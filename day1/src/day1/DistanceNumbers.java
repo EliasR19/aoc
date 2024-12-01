@@ -5,7 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class DistanceNumbers {
-//testaaaa
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		

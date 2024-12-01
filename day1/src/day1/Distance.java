@@ -10,7 +10,7 @@ public class Distance {
 	List<Integer> numListLeft = new ArrayList<Integer>();
 	List<Integer> numListRight = new ArrayList<Integer>();
 	List<String> temp = new ArrayList<String>();
-	
+	//
 	int sumDistance = 0;
 	
 	
