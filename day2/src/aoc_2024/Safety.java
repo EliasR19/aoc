@@ -1,6 +1,7 @@
 package aoc_2024;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Safety {
@@ -23,7 +24,8 @@ public class Safety {
 				
 			}		
 			
-			this.countIfSafe(lineInt);
+			//this.countIfSafe(lineInt); part one
+			this.countIfSafeTwo(lineInt); // part two
 			lineInt.removeAll(lineInt);
 			
 			
@@ -32,7 +34,42 @@ public class Safety {
 		
 	}
 	
+	//parte 2
+	public void countIfSafeTwo(List<Integer> numsLines) {
+		
+		if(this.increasOrDecreas(numsLines) && this.lessThan3(numsLines) || this.safeIsRemoveOne(numsLines)) {
+			this.count();
+		}
+		System.out.println(count);
+		
+	}
 	
+	private boolean safeIsRemoveOne(List<Integer> numsLines) {
+		List<Integer> temp = this.addTo(numsLines);
+		printListInt("temp1 " ,temp);
+		printListInt("original " ,numsLines);
+		for(int n = 0; n < numsLines.size(); n++) {
+			temp.remove(n);
+			printListInt("temp: ", temp);
+			if(this.increasOrDecreas(temp) && this.lessThan3(temp)) {
+				return true;
+			}
+			printListInt(n + " original" ,numsLines);
+			temp = this.addTo(numsLines);
+		}
+		return false;
+	}
+
+	private List<Integer> addTo(List<Integer> numsLines) {
+		List<Integer> temp = new ArrayList<Integer>();
+		for(int n : numsLines) {
+			temp.add(n);
+		}
+		
+		return temp;
+	}
+
+	//Parte 1
 	public void countIfSafe(List<Integer> numsLines) {
 	
 		if(this.increasOrDecreas(numsLines) && this.lessThan3(numsLines)) {
@@ -47,7 +84,7 @@ public class Safety {
 		for(int n = 1; n < numsLines.size() ; n++) {
 			//System.out.println("temp: " + temp + " curr: " + numsLines.get(n));
 			if(Math.abs(numsLines.get(n) - temp) < 1 || Math.abs(numsLines.get(n) - temp) > 3) {
-				System.out.println("aca");
+				//System.out.println("aca");
 				return false;
 			}
 			temp = numsLines.get(n);
@@ -105,7 +142,8 @@ public class Safety {
 	}
 	
 
-	public void printListInt(List<Integer> list) {
+	public void printListInt(String text, List<Integer> list) {
+		System.out.print(text + " ");
 		for (int n : list) {
 			System.out.print(n + " ");
 		}
@@ -117,5 +155,6 @@ public class Safety {
 		}
 		System.out.println("\n");
 	}
+
 	
 }

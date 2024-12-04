@@ -15,12 +15,18 @@ public class Main {
 			
 			Safety saf = new Safety(inputLines);
 			saf.toInt();
-			System.out.println("Part One: " + saf.getCount());
+			System.out.println("Part Two: " + saf.getCount());
 			
 			List<Integer> test = new ArrayList<Integer>();
-			test.add(10);
-			test.add(7);
-			test.add(5);
+			test.add(8);
+			test.add(6);
+			test.add(4);
+			test.add(4);
+			test.add(1);
+
+			
+			
+			//saf.countIfSafeTwo(test);
 
 		} catch(Exception e) {
 			e.printStackTrace();
